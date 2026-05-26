@@ -17,7 +17,8 @@ public class AddressBookMain {
             System.out.println("3. Delete Contact");
             System.out.println("4. Display Contacts");
             System.out.println("5. Sort Contacts by Name");
-            System.out.println("6. Exit");
+            System.out.println("6. Sort Contacts by City, State, or Zip");
+            System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
 
             int choice;
@@ -59,6 +60,32 @@ public class AddressBookMain {
                     }
                     break;
                 case 6:
+                    System.out.println("Sort by: 1. City  2. State  3. Zip");
+                    int sortChoice;
+                    try {
+                        sortChoice = Integer.parseInt(scanner.nextLine());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid choice.");
+                        break;
+                    }
+                    java.util.List<Contact> sortedList = null;
+                    if (sortChoice == 1) {
+                        sortedList = addressBook.sortByCity();
+                    } else if (sortChoice == 2) {
+                        sortedList = addressBook.sortByState();
+                    } else if (sortChoice == 3) {
+                        sortedList = addressBook.sortByZip();
+                    } else {
+                        System.out.println("Invalid choice.");
+                        break;
+                    }
+                    if (sortedList.isEmpty()) {
+                        System.out.println("Address Book is empty.");
+                    } else {
+                        sortedList.forEach(System.out::println);
+                    }
+                    break;
+                case 7:
                     running = false;
                     System.out.println("Thank you for using Address Book.");
                     break;
