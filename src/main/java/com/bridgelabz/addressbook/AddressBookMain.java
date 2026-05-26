@@ -20,7 +20,9 @@ public class AddressBookMain {
             System.out.println("6. Sort Contacts by City, State, or Zip");
             System.out.println("7. View Persons by City or State");
             System.out.println("8. Search Persons by City or State");
-            System.out.println("9. Exit");
+            System.out.println("9. Write JSON File");
+            System.out.println("10. Read JSON File");
+            System.out.println("11. Exit");
             System.out.print("Enter your choice: ");
 
             int choice;
@@ -152,6 +154,13 @@ public class AddressBookMain {
                     }
                     break;
                 case 9:
+                    AddressBookJSONService.writeContacts(addressBook.getContactList());
+                    break;
+                case 10:
+                    java.util.List<Contact> jsonContacts = AddressBookJSONService.readContacts();
+                    jsonContacts.forEach(addressBook::addContact);
+                    break;
+                case 11:
                     running = false;
                     System.out.println("Thank you for using Address Book.");
                     break;
