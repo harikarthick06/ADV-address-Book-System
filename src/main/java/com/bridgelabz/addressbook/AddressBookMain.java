@@ -24,7 +24,9 @@ public class AddressBookMain {
             System.out.println("10. Read JSON File");
             System.out.println("11. Write CSV File");
             System.out.println("12. Read CSV File");
-            System.out.println("13. Exit");
+            System.out.println("13. Add Contact to JSON Server");
+            System.out.println("14. Read Contacts from JSON Server");
+            System.out.println("15. Exit");
             System.out.print("Enter your choice: ");
 
             int choice;
@@ -170,6 +172,18 @@ public class AddressBookMain {
                     csvContacts.forEach(addressBook::addContact);
                     break;
                 case 13:
+                    Contact serverContact = createContactFromUser();
+                    AddressBookRestService.addContact(serverContact);
+                    break;
+                case 14:
+                    java.util.List<Contact> serverContacts = AddressBookRestService.getContacts();
+                    if (serverContacts.isEmpty()) {
+                        System.out.println("No contacts found on JSON Server.");
+                    } else {
+                        serverContacts.forEach(System.out::println);
+                    }
+                    break;
+                case 15:
                     running = false;
                     System.out.println("Thank you for using Address Book.");
                     break;
