@@ -16,6 +16,15 @@ public class AddressBook {
         return true;
     }
 
+    public boolean addMultipleContacts(List<Contact> contacts) {
+        if (contacts == null || contacts.isEmpty()) {
+            return false;
+        }
+        contactList.addAll(contacts);
+        System.out.println("Multiple contacts added successfully.");
+        return true;
+    }
+
     public void displayContacts() {
         if (contactList.isEmpty()) {
             System.out.println("Address Book is empty.");
