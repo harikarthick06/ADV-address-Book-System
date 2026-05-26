@@ -10,7 +10,15 @@ public class AddressBook {
         return contactList;
     }
 
+    public boolean isDuplicate(Contact newContact) {
+        return contactList.stream().anyMatch(contact -> contact.equals(newContact));
+    }
+
     public boolean addContact(Contact contact) {
+        if (isDuplicate(contact)) {
+            System.out.println("Duplicate contact found. Contact not added.");
+            return false;
+        }
         contactList.add(contact);
         System.out.println("Contact added successfully.");
         return true;
@@ -20,8 +28,9 @@ public class AddressBook {
         if (contacts == null || contacts.isEmpty()) {
             return false;
         }
-        contactList.addAll(contacts);
-        System.out.println("Multiple contacts added successfully.");
+        for (Contact contact : contacts) {
+            addContact(contact);
+        }
         return true;
     }
 
