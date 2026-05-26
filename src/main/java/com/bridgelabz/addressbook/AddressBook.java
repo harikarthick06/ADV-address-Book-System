@@ -110,4 +110,14 @@ public class AddressBook {
                 .sorted(java.util.Comparator.comparing(Contact::getZip, String.CASE_INSENSITIVE_ORDER))
                 .toList();
     }
+
+    public java.util.Map<String, List<Contact>> getPersonsByCity() {
+        return contactList.stream()
+                .collect(java.util.stream.Collectors.groupingBy(Contact::getCity));
+    }
+
+    public java.util.Map<String, List<Contact>> getPersonsByState() {
+        return contactList.stream()
+                .collect(java.util.stream.Collectors.groupingBy(Contact::getState));
+    }
 }
