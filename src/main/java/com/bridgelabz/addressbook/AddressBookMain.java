@@ -22,7 +22,9 @@ public class AddressBookMain {
             System.out.println("8. Search Persons by City or State");
             System.out.println("9. Write JSON File");
             System.out.println("10. Read JSON File");
-            System.out.println("11. Exit");
+            System.out.println("11. Write CSV File");
+            System.out.println("12. Read CSV File");
+            System.out.println("13. Exit");
             System.out.print("Enter your choice: ");
 
             int choice;
@@ -161,6 +163,13 @@ public class AddressBookMain {
                     jsonContacts.forEach(addressBook::addContact);
                     break;
                 case 11:
+                    AddressBookCSVService.writeContacts(addressBook.getContactList());
+                    break;
+                case 12:
+                    java.util.List<Contact> csvContacts = AddressBookCSVService.readContacts();
+                    csvContacts.forEach(addressBook::addContact);
+                    break;
+                case 13:
                     running = false;
                     System.out.println("Thank you for using Address Book.");
                     break;

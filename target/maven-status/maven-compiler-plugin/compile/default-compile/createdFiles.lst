@@ -2,4 +2,5 @@ com/bridgelabz/addressbook/Contact.class
 com/bridgelabz/addressbook/AddressBook.class
 com/bridgelabz/addressbook/AddressBookJSONService.class
 com/bridgelabz/addressbook/AddressBookJSONService$1.class
+com/bridgelabz/addressbook/AddressBookCSVService.class
 com/bridgelabz/addressbook/AddressBookMain.class
