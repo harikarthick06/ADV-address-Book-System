@@ -16,7 +16,8 @@ public class AddressBookMain {
             System.out.println("2. Edit Contact");
             System.out.println("3. Delete Contact");
             System.out.println("4. Display Contacts");
-            System.out.println("5. Exit");
+            System.out.println("5. Sort Contacts by Name");
+            System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
 
             int choice;
@@ -50,6 +51,14 @@ public class AddressBookMain {
                     addressBook.displayContacts();
                     break;
                 case 5:
+                    java.util.List<Contact> sorted = addressBook.sortByName();
+                    if (sorted.isEmpty()) {
+                        System.out.println("Address Book is empty.");
+                    } else {
+                        sorted.forEach(System.out::println);
+                    }
+                    break;
+                case 6:
                     running = false;
                     System.out.println("Thank you for using Address Book.");
                     break;

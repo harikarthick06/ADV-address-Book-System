@@ -85,4 +85,11 @@ public class AddressBook {
         System.out.println("Contact deleted successfully.");
         return true;
     }
+
+    public List<Contact> sortByName() {
+        return contactList.stream()
+                .sorted(java.util.Comparator.comparing(Contact::getFirstName, String.CASE_INSENSITIVE_ORDER)
+                        .thenComparing(Contact::getLastName, String.CASE_INSENSITIVE_ORDER))
+                .toList();
+    }
 }
