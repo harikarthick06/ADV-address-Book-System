@@ -120,4 +120,16 @@ public class AddressBook {
         return contactList.stream()
                 .collect(java.util.stream.Collectors.groupingBy(Contact::getState));
     }
+
+    public List<Contact> searchByCity(String city) {
+        return contactList.stream()
+                .filter(contact -> contact.getCity().equalsIgnoreCase(city))
+                .toList();
+    }
+
+    public List<Contact> searchByState(String state) {
+        return contactList.stream()
+                .filter(contact -> contact.getState().equalsIgnoreCase(state))
+                .toList();
+    }
 }

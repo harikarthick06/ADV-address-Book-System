@@ -19,7 +19,8 @@ public class AddressBookMain {
             System.out.println("5. Sort Contacts by Name");
             System.out.println("6. Sort Contacts by City, State, or Zip");
             System.out.println("7. View Persons by City or State");
-            System.out.println("8. Exit");
+            System.out.println("8. Search Persons by City or State");
+            System.out.println("9. Exit");
             System.out.print("Enter your choice: ");
 
             int choice;
@@ -120,6 +121,37 @@ public class AddressBookMain {
                     }
                     break;
                 case 8:
+                    System.out.println("Search by: 1. City  2. State");
+                    int searchChoice;
+                    try {
+                        searchChoice = Integer.parseInt(scanner.nextLine());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid choice.");
+                        break;
+                    }
+                    if (searchChoice == 1) {
+                        System.out.print("Enter city: ");
+                        String city = scanner.nextLine();
+                        java.util.List<Contact> found = addressBook.searchByCity(city);
+                        if (found.isEmpty()) {
+                            System.out.println("No contacts found in city " + city);
+                        } else {
+                            found.forEach(System.out::println);
+                        }
+                    } else if (searchChoice == 2) {
+                        System.out.print("Enter state: ");
+                        String state = scanner.nextLine();
+                        java.util.List<Contact> found = addressBook.searchByState(state);
+                        if (found.isEmpty()) {
+                            System.out.println("No contacts found in state " + state);
+                        } else {
+                            found.forEach(System.out::println);
+                        }
+                    } else {
+                        System.out.println("Invalid choice.");
+                    }
+                    break;
+                case 9:
                     running = false;
                     System.out.println("Thank you for using Address Book.");
                     break;
