@@ -12,6 +12,10 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * AddressBookJSONService handles JSON file I/O operations using the Google Gson library.
+ * Built for UC11 and UC13 of the Advanced Address Book System.
+ */
 public class AddressBookJSONService {
     private static final Path JSON_FILE_PATH = Path.of("src/main/resources/addressbook.json");
 
