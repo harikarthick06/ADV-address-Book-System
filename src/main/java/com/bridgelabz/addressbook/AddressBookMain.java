@@ -26,7 +26,9 @@ public class AddressBookMain {
             System.out.println("12. Read CSV File");
             System.out.println("13. Add Contact to JSON Server");
             System.out.println("14. Read Contacts from JSON Server");
-            System.out.println("15. Exit");
+            System.out.println("15. Threaded JSON Write");
+            System.out.println("16. Threaded CSV Write");
+            System.out.println("17. Exit");
             System.out.print("Enter your choice: ");
 
             int choice;
@@ -184,6 +186,12 @@ public class AddressBookMain {
                     }
                     break;
                 case 15:
+                    AddressBookThreadService.writeJSONUsingThread(addressBook.getContactList());
+                    break;
+                case 16:
+                    AddressBookThreadService.writeCSVUsingThread(addressBook.getContactList());
+                    break;
+                case 17:
                     running = false;
                     System.out.println("Thank you for using Address Book.");
                     break;
