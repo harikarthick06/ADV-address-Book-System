@@ -55,4 +55,16 @@ public class AddressBook {
         System.out.println("Contact updated successfully.");
         return true;
     }
+
+    public boolean deleteContact(String firstName, String lastName) {
+        java.util.Optional<Contact> contactOptional = findContact(firstName, lastName);
+        if (contactOptional.isEmpty()) {
+            System.out.println("Contact not found.");
+            return false;
+        }
+
+        contactList.remove(contactOptional.get());
+        System.out.println("Contact deleted successfully.");
+        return true;
+    }
 }
